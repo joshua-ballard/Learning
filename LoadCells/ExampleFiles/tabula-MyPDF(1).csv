@@ -1,0 +1,17 @@
+Sensor Info,""
+Model .......... LLB400 ,Item # .......... FSH02239
+S/N ............. 588873 ,Capacity ....... 2000 lb
+Calibration Data,""
+Test Temp .......... 76.2 °F (24.56 °C) ,Relative Humidity .......... 45.8 %
+Excitation ............ 9.99 (Vdc) ,Input Resistance ............ 705 (Ohms)
+Zero .................... 0.0042 (mV/V) ,Output Resistance ......... 705 (Ohms)
+direction: Compression,""
+Rated Output .......... 2.35 (mV/V),""
+Linearity .................. -0.191 % of R.O.,""
+0.000 ,0.0000 ,0.000
+400.000 ,0.4682 ,-0.075
+800.000 ,0.9363 ,-0.154
+1100.000 ,1.2879 ,-0.191
+1500.000 ,1.7591 ,-0.138
+2000.000 ,2.3498 ,0.000
+0.000 ,0.0007,""
