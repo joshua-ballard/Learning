@@ -13,3 +13,10 @@ Given a group of people with their birth years and death years, find the year wi
 ### [Load Cell](./LoadCells#load-cells)
 
 This was a work project compiling load cell serial numbers and calibration into a single document to be used for a data acquisition system.
+
+---------
+
+### [LakeShore to CryoCon](./LS_to_CCon#LS_to_CCon)
+Convert LakeShore .dat files to CryoCon .crv files for Cernox sensors.
+
+---------
