@@ -1,33 +1,31 @@
-#Convert LakeShore *.curve files into CryoCon *.crv files
+# Convert LakeShore Cernox *.curve files into CryoCon *.crv files
 
+import argparse
 import csv
 
-def find_serial(filename):
-  return filename[:-4]
+# deal with input arguments
+parser = argparse.ArgumentParser(description='Convert LS .dat to Cryocon .crv')
+parser.add_argument('-i', '--input', help='Input file name', required=True)
+args = parser.parse_args()
 
+readfile = args.input
+writefile = args.input[:-4] + '.crv'
+
+# build the header (fixed by CryoCon for Cernox sensors)
 headerlines = [['ACR'], ['-1.0'], ['ohms']]
-temperature = []
-resistance = []
 
-readfile = 'x100335.dat'
+# file reads & writes
+with open(readfile, 'r') as infilehandle, open(writefile, 'w') as outfilehandle:
+  curvereader = csv.reader(infilehandle, delimiter=' ', skipinitialspace=True)
+  curvewriter = csv.writer(outfilehandle, delimiter='\t', lineterminator='\n')
 
-with open(readfile, 'r') as csvfile:
-  serial_number = [find_serial(readfile)]
-  curvereader = csv.reader(csvfile, delimiter=' ', skipinitialspace=True)
+  # set up and write the header
+  curvewriter.writerow([readfile[:-4]])
+  for line in headerlines:
+    curvewriter.writerow(line)
+
   for rownum, row in enumerate(curvereader):
     if rownum > 2:
-      temperature.append(row[0])
-      resistance.append(row[1])
-
-  outfile = 'x100335.crv'
-
-  with open(outfile, 'w') as outfilehandle:
-    curvewriter = csv.writer(outfilehandle, delimiter=' ', lineterminator='\n')
-    curvewriter.writerow(serial_number)
-    for line in headerlines:
-      curvewriter.writerow(line)
-    for i, temp in enumerate(temperature):
-      datapoint = [resistance[i], temperature[i]]
-      curvewriter.writerow(datapoint)
-
-    curvewriter.writerow([';'])
+      curvewriter.writerow([row[1], row[0]])
+  # standard .crv file ends with semicolon
+  curvewriter.writerow([';'])
