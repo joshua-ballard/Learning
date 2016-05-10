@@ -6,7 +6,7 @@ CryoCon curve will be in .crv format.
 
 ## USAGE
 
-python LS_to_CCon -i <filename.dat>
+```python LS_to_CCon -i <filename.dat>```
 
 currently, this will have to be done one file at a time.
 
