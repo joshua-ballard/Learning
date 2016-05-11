@@ -20,3 +20,8 @@ This was a work project compiling load cell serial numbers and calibration into 
 Convert LakeShore .dat files to CryoCon .crv files for Cernox sensors.
 
 ---------
+
+### [Curve Offset](./CurveOffset#CurveOffset)
+Add an offset to the resistance values in a cryocon calibration curve.
+
+---------
