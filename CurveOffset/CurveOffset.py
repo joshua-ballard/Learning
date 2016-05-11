@@ -5,21 +5,25 @@ import csv
 import sys
 
 def main(readfile, offset):
-  writefile = readfile[:-4] + 'plus' + str(offset) + '.crv'
+  writefile = readfile[:-4] + 'plus' + offset + '.crv'
+  offset = float(offset)
 
   # file reads & writes
-  with open(readfile, 'r') as infilehandle, open(writefile, 'w') as outfilehandle:
-    curvereader = csv.reader(infilehandle, delimiter=' ', skipinitialspace=True)
-    curvewriter = csv.writer(outfilehandle, delimiter='\t', lineterminator='\n')
+  with open(readfile, 'r') as infile, open(writefile, 'w') as outfile:
 
-    for rownum, row in enumerate(curvereader):
-        if rownum < 5:
-            curvewriter.writerow([row[0]])
-        elif rownum >= 5 and rownum < 60:
-            curvewriter.writerow([str(float(row[1]) + offset), row[0]])
-    # standard .crv file ends with semicolon
-    curvewriter.writerow([';'])
-
+    for linenum, line in enumerate(infile.readlines()):
+        if linenum == 0:
+            firstline = line[:-1] + ' offset\n'
+            outfile.write(firstline)
+        elif linenum < 4:
+            outfile.write(line)
+        else:
+            row = line.split( )
+            if len(row) < 2:
+                outfile.write(row[0])
+            else:
+                row[0] = str(float(row[0]) + offset)
+                outfile.write('\t'.join(row) + '\n')
 
 if __name__ == '__main__':
   # deal with input arguments
