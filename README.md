@@ -29,3 +29,8 @@ Add an offset to the resistance values in a cryocon calibration curve.
 Find the min/max resistance from a spreadsheet of Cernox CurveOffset
 
 ---------
+
+### [Machine Learning](./MachineLearning#Machine Learning)
+Some machine learning resources
+
+---------
