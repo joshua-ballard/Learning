@@ -34,3 +34,8 @@ Find the min/max resistance from a spreadsheet of Cernox CurveOffset
 Some machine learning resources
 
 ---------
+
+### [Cernox Consolidate](./Cernox_Consolidate#Cernox Consolidate)
+Consolidate cernox curves from individual sheets in one excel file onto a single worksheet.
+
+---------
